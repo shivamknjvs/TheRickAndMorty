@@ -1,0 +1,66 @@
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 1.5rem; 
+    text-align: center;
+  }
+  
+  .card-container {
+    position: relative;
+    background-color: rgb(60, 62, 68);
+    color: white;
+  }
+  
+  .card-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-location {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  
+  .status-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .status-dead {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .status-alive {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .status-unknown {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+  }
+  
+  

@@ -1,0 +1,31 @@
+
+
+.episodes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .episodes-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .episodes-content {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(39, 43, 51);
+    padding: 4.5rem 0;
+  }
+  
+  .episode-picker {
+    flex: 0 0 30%;
+    margin-right: 20px;
+  }
+  
+  .episode-cards {
+    flex: 0 0 65%;
+  }
+  
+
+  

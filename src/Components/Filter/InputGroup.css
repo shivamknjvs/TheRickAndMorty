@@ -1,0 +1,17 @@
+
+.input-group-container {
+    margin-bottom: 1rem;
+  }
+  
+  .custom-select {
+    
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da; 
+    background-color: #fff;
+    color: #495057; 
+  }
+  

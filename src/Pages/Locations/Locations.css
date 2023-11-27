@@ -1,0 +1,23 @@
+
+  
+  .location-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .location-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+
+  }
+  .Card-container{
+    background-color: rgb(39, 43, 51);
+    padding: 4.5rem;
+  }
+
+  

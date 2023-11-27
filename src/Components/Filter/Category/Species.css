@@ -1,0 +1,49 @@
+/* Species.module.css */
+
+.accordionItem {
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    position: relative;
+  display: inline-block;
+  }
+  .accordionItem:hover .accordionBody{
+    display: block;
+  }
+  
+  .accordionHeader {
+    cursor: pointer;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #d8d8d8;
+  }
+  
+  .accordionCollapse1 {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+  }
+  
+  .showAccordion1 {
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .accordionBody1 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 90px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+      padding: 1rem;
+      border-radius: 8px;
+  }
+  
+  /* Styles for individual items */
+  .filterItem {
+    margin-bottom: 0.5rem;
+  }
+  
