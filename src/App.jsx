@@ -53,15 +53,25 @@ const Home = () => {
 
   // Effect hook to fetch data when component mounts or when dependencies change
   useEffect(() => {
-    try{(async function () {
-      let data = await fetch(api).then((res) => res.json());
-      updateFetchedData(data);
-    })}
-    catch(error){
-      window.alert("Please enter valid character");
-    }
-    // console.log(api);
+    const fetchData = async () => {
+      try {
+        let data = await fetch(api);
+        
+        if (!data.ok) {
+          throw new Error(`Error fetching data from ${api}`);
+        }
+  
+        data = await data.json();
+        updateFetchedData(data);
+      } catch (error) {
+        console.error(`Error fetching data: ${error.message}`);
+        window.alert("Please enter valid character");
+      }
+    };
+  
+    fetchData();
   }, [api]);
+  
 
   return (
     <>
