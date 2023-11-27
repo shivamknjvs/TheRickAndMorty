@@ -3,45 +3,44 @@ import React, { useEffect, useState } from "react";
 import Card from "../../Components/Card/Card";
 import InputGroup from "../../Components/Filter/InputGroup";
 import Search from "../../Components/Search/Search";
-import "./Locations.css"; 
+import "./Locations.css";
 
 const Locations = () => {
-
   // State variables for managing location data, info, and page number
 
   let [results, setResults] = React.useState([]);
   let [info, setInfo] = useState({});
   let { dimension, type, name, residents } = info;
   let [number, setNumber] = useState(1);
-  let [pageNumber,updatePageNumber]=useState(1);
-  const [search, setSearch]=useState("Earth%20(C-137)");
+  let [pageNumber, updatePageNumber] = useState(1);
+  const [search, setSearch] = useState("Earth%20(C-137)");
 
-   // API URL for fetching location data
+  // API URL for fetching location data
 
-  let api=`https://rickandmortyapi.com/api/location?name=${search}`;
+  let api = `https://rickandmortyapi.com/api/location?name=${search}`;
 
-   // Effect hook to fetch location data and residents
+  // Effect hook to fetch location data and residents
 
   useEffect(() => {
     (async function () {
-      try{let data = await fetch(api).then((res) => res.json());
-      setInfo(data.results[0]);
-      // console.log(data.results[0]);
-      let a = await Promise.all(
-        
-        data.results[0].residents.map((x) => {
-          return  fetch(x).then((res) => res.json());
-        })
-      );
-} catch(error){
-  window.alert("Please enter valid location");
-}
-      setResults(a);
+      try {
+        let data = await fetch(api).then((res) => res.json());
+        setInfo(data.results[0]);
+        // console.log(data.results[0]);
+        let a = await Promise.all(
+          data.results[0].residents.map((x) => {
+            return fetch(x).then((res) => res.json());
+          })
+        );
+        setResults(a);
+      } catch (error) {
+        window.alert("Please enter valid location");
+      }
+      
     })();
   }, [api]);
 
-
-// Array of all possible locations
+  // Array of all possible locations
   const allLocations = [
     "Earth (C-137)",
     "Abadango",
@@ -168,36 +167,39 @@ const Locations = () => {
     "Normal Size Bug Dimension",
     "Slartivart",
     "Rick and Two Crows Planet",
-    "Rick's Memories"
+    "Rick's Memories",
   ];
-  
 
   return (
-
     <>
-     <div className="Hero-section">
+      <div className="Hero-section">
         <div className="container">
-        <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-        <InputGroup name="Location" setSearch={setSearch} total={126} options={allLocations} />          
+          <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+          <InputGroup
+            name="Location"
+            setSearch={setSearch}
+            total={126}
+            options={allLocations}
+          />
         </div>
       </div>
-    <div className="location-container">
-      <div className="location-header">
-        <h1>
-          Location:{" "}
-          <span className="text-primary">
-            {name === "" ? "Unknown" : name}
-          </span>
-        </h1>
-        <h4>Dimension: {dimension === "" ? "Unknown" : dimension}</h4>
-        <h4>Type: {type === "" ? "Unknown" : type}</h4>
-        <h4>No. of Residents: {residents?residents.length:0}</h4>
+      <div className="location-container">
+        <div className="location-header">
+          <h1>
+            Location:{" "}
+            <span className="text-primary">
+              {name === "" ? "Unknown" : name}
+            </span>
+          </h1>
+          <h4>Dimension: {dimension === "" ? "Unknown" : dimension}</h4>
+          <h4>Type: {type === "" ? "Unknown" : type}</h4>
+          <h4>No. of Residents: {residents ? residents.length : 0}</h4>
+        </div>
+
+        <div className="Card-container">
+          <Card page="/" results={results} />
+        </div>
       </div>
-     
-      <div className="Card-container">
-        <Card page="/" results={results} />
-      </div>
-    </div>
     </>
   );
 };
