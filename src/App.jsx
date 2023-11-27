@@ -41,20 +41,16 @@ const Home = () => {
 
   // State variables for managing page number, filtering options, and fetched data
   let [pageNumber, updatePageNumber] = useState(1);
-  let [status, updateStatus] = useState([]);
-  let [gender, updateGender] = useState([]);
-  let [species, updateSpecies] = useState([]);
+  let [status, updateStatus] = useState("");
+  let [gender, updateGender] = useState("");
+  let [species, updateSpecies] = useState("");
   let [fetchedData, updateFetchedData] = useState([]);
   let [search, setSearch] = useState("");
   let { info, results } = fetchedData;
 
-  const statusParams = status.map((s) => `status=${s}`).join("||");
-  const genderParams = gender.map((g) => `gender=${g}`).join("||");
-  const speciesParams = species.map((sp) => `species=${sp}`).join("||");
+  // API URL for fetching character data based on filters and page number
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
-  // Combine all parameters in the URL
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&${statusParams}&${genderParams}&${speciesParams}`;
-  console.log(api);
   // Effect hook to fetch data when component mounts or when dependencies change
   useEffect(() => {
     (async function () {

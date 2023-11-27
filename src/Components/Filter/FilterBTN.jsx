@@ -1,3 +1,4 @@
+// FilterBTN.js
 import React from "react";
 import "./FilterBTN.css";
 
@@ -9,7 +10,7 @@ const FilterBTN = ({ input, task, updatePageNumber, index, name }) => {
       {/* Radio input for the filter button */}
       <input
         className="input-radio"
-        type="checkbox"
+        type="radio"
         name={name}
         id={`${name}-${index}`}
       />
@@ -18,23 +19,10 @@ const FilterBTN = ({ input, task, updatePageNumber, index, name }) => {
       <label
         // Click event handler to execute the task and update page number
         onClick={() => {
-          task((prevArray) => {
-            let updatedArray;
-            // Check if the checkbox is checked
-            if (prevArray.includes(input)) {
-              // If checked, remove the element from the array
-              updatedArray = prevArray.filter((item) => item !== input);
-            } else {
-              // If unchecked, add the element to the array
-              updatedArray = [...prevArray, input];
-            }
-            // Update page number
-            updatePageNumber(1);
-            // Return the updated array for the next state update if needed
-            return updatedArray;
-          });
+          task(input);
+          updatePageNumber(1);
         }}
-        className=""
+        className="btn btn-outline-primary"
         htmlFor={`${name}-${index}`}
       >
         {/* Text content of the filter button */}
