@@ -1,28 +1,35 @@
 import React from "react";
-import "./InputGroup.css"; 
+import "./InputGroup.css";
 
-const InputGroup = ({ name, changeID, options , total}) => {
+// InputGroup component for dropdown input group
+const InputGroup = ({ name, setSearch, changeId, options, total }) => {
   return (
+    // Input group container
     <div className="input-group-container">
-
-    
+      {/* Dropdown select element */}
       <select
-        onChange={(e) => changeID(e.target.value)}
+        // Event handler for value change in the dropdown
+        onChange={(e) => setSearch(e.target.value)}
         className="custom-select"
         id={name}
       >
+        {/* Default option */}
         <option value="1">Choose...</option>
-        {options?options.map((episode, index) => (
-          <option key={index} value={index + 1}>
-            {name} - {episode}
-          </option>
-        )):[...Array(total).keys()].map((x, index) => {
-          return (
-            <option key={index} value={x + 1}>
-              {name} - {x + 1}
-            </option>
-          );
-        })}
+        
+        {/* Mapping over options to create dropdown options */}
+        {options
+          ? options.map((page, index) => (
+              <option key={index} value={page}>
+                {name}- {page}
+              </option>
+            ))
+          : [...Array(total).keys()].map((x, index) => {
+              return (
+                <option key={index} value={x + 1}>
+                  {name} - {x + 1}
+                </option>
+              );
+            })}
       </select>
     </div>
   );

@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import Card from "../../Components/Card/Card";
 import InputGroup from "../../Components/Filter/InputGroup";
 import Search from "../../Components/Search/Search";
-import "./Locations.css"; // Import your custom styles
+import "./Locations.css"; 
 
 const Locations = () => {
+
+  // State variables for managing location data, info, and page number
+
   let [results, setResults] = React.useState([]);
   let [info, setInfo] = useState({});
   let { dimension, type, name } = info;
@@ -13,12 +16,15 @@ const Locations = () => {
   let [pageNumber,updatePageNumber]=useState(1);
   const [search, setSearch]=useState("Earth%20(C-137)");
 
-  let api = `https://rickandmortyapi.com/api/location/${number}`;
+   // API URL for fetching location data
 
-  let api2=`https://rickandmortyapi.com/api/location?name=${search}`;
+  let api=`https://rickandmortyapi.com/api/location?name=${search}`;
+
+   // Effect hook to fetch location data and residents
+
   useEffect(() => {
     (async function () {
-      let data = await fetch(api2).then((res) => res.json());
+      let data = await fetch(api).then((res) => res.json());
       setInfo(data.results[0]);
       console.log(data.results[0]);
       let a = await Promise.all(
@@ -30,24 +36,10 @@ const Locations = () => {
 
       setResults(a);
     })();
-  }, [api2]);
-
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((res) => res.json());
-      setInfo(data);
-      console.log(data);
-      let a = await Promise.all(
-        
-        data.residents.map((x) => {
-          return  fetch(x).then((res) => res.json());
-        })
-      );
-
-      setResults(a);
-    })();
   }, [api]);
 
+
+// Array of all possible locations
   const allLocations = [
     "Earth (C-137)",
     "Abadango",
@@ -184,7 +176,7 @@ const Locations = () => {
      <div className="Hero-section">
         <div className="container">
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-        <InputGroup name="Location" changeID={setNumber} total={126} options={allLocations} />          
+        <InputGroup name="Location" setSearch={setSearch} total={126} options={allLocations} />          
         </div>
       </div>
     <div className="location-container">
@@ -200,7 +192,7 @@ const Locations = () => {
       </div>
      
       <div className="Card-container">
-        <Card page="/location/" results={results} />
+        <Card page="/" results={results} />
       </div>
     </div>
     </>

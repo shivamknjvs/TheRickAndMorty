@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import "./CardDetails.css";
 
 const CardDetails = () => {
+  // Extracting 'id' from the route parameters
   const { id } = useParams();
 
+  // State for character and episodes data
   const [character, setCharacter] = useState(null);
   const [episodes, setEpisodes] = useState([]);
 
@@ -15,6 +17,7 @@ const CardDetails = () => {
         const characterResponse = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
         const characterData = await characterResponse.json();
 
+        // Check if character data contains episode information
         if (!characterData.episode || !Array.isArray(characterData.episode)) {
           console.warn("No episode data found for this character.");
           return;
@@ -38,6 +41,7 @@ const CardDetails = () => {
     fetchData();
   }, [id]);
 
+  // Render loading message until character data is fetched
   if (!character) {
     return <div>Loading...</div>;
   }
@@ -45,14 +49,14 @@ const CardDetails = () => {
   return (
     <div className="container">
       <div className="card-details">
+        {/* Display character details */}
         <h1>{character.name}</h1>
-
         <img src={character.image} alt="" />
-
         <div className={`status-badge ${character.status ? character.status.toLowerCase() : character.status}`}>
           {character.status}
         </div>
 
+        {/* Display character information */}
         <div className="content">
           <div>
             <span className="Details">Gender:</span> {character.gender}
@@ -67,6 +71,8 @@ const CardDetails = () => {
             <span className="Details">Species:</span> {character.species}
           </div>
         </div>
+
+        {/* Display episodes information */}
         <div className="Episodes">
           <span className="Details">Episodes:</span>
           {episodes.map((episode, index) => (

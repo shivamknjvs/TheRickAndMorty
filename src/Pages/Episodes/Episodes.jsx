@@ -1,5 +1,3 @@
-// Episodes.jsx
-
 import React, { useEffect, useState } from "react";
 import Card from "../../Components/Card/Card";
 import InputGroup from "../../Components/Filter/InputGroup";
@@ -8,11 +6,14 @@ import "./Episodes.css";
 
 
 const Episodes = () => {
+
+  // State variables for managing location data, info, and page number
+  
   const [results, setResults] = useState([]);
   const [info, setInfo] = useState({});
   const { air_date, episode, name } = info;
   const [id, setID] = useState(1);
-  const [search, setSearch]=useState("Planet");
+  const [search, setSearch]=useState("Pilot");
   let [pageNumber,updatePageNumber]=useState(1);
 
 
@@ -71,18 +72,20 @@ const Episodes = () => {
     "The Ricks Must Be Crazy",
   ];
   
-  const api = `https://rickandmortyapi.com/api/episode/${id}`;
+// API URLs for fetching Episodes data
+  const api = `https://rickandmortyapi.com/api/episode?name=${search}`;
 
-  const api2 = `https://rickandmortyapi.com/api/episode/$name=${search}`;
+
+  // Effect hook to fetch Episodes data and characters
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetch(api).then((res) => res.json());
-        setInfo(data);
-
+        setInfo(data.results[0]);
+        console.log(data.results[0]);
         const charactersData = await Promise.all(
-          data.characters.map((x) => fetch(x).then((res) => res.json()))
+          data.results[0].characters.map((x) => fetch(x).then((res) => res.json()))
         );
         setResults(charactersData);
       } catch (error) {
@@ -92,13 +95,13 @@ const Episodes = () => {
 
     fetchData();
   }, [api]);
-
+console.log(search);
   return (
     <>
       <div className="Hero-section">
         <div className="container">
           <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-          <InputGroup name="Episode" changeID={setID} options={episodeNames} />
+          <InputGroup name="Episode" setSearch={setSearch} options={episodeNames}  />
           
         </div>
       </div>
