@@ -14,9 +14,9 @@ const Filter = ({
 }) => {
   // Function to clear all filters and reload the page
   let clear = () => {
-    updateStatus("");
-    updateGender("");
-    updateSpecies("");
+    updateStatus([]);
+    updateGender([]);
+    updateSpecies([]);
     updatePageNumber(1);
     window.location.reload(false);
   };

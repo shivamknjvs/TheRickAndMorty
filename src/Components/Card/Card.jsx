@@ -8,7 +8,7 @@ const Card = ({ page, results }) => {
   if (results) {
     // Map through the results to create individual card elements
     display = results.map((x) => {
-      let { id, image, name, status, location } = x;
+      let { id, image, name,gender, status, location } = x;
 
       return (
         // Link to the detailed view of the character
@@ -19,6 +19,8 @@ const Card = ({ page, results }) => {
             <div className="card-content">
               {/* Character name */}
               <div className="card-title">{name}</div>
+              {/* Character Gender */}
+              <div className="card-title">{gender}</div>
               {/* Last location of the character */}
               <div className="card-location">
                 <div style={{ fontWeight: "bold" }}>Last Location</div>
