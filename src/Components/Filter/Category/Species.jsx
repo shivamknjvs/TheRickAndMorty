@@ -24,7 +24,7 @@ const Species = ({ updateSpecies, updatePageNumber }) => {
 
   // Function to toggle accordion open/closed state
   const toggleAccordion = () => {
-    console.log("change from status");
+    // console.log("change from status");
     setAccordionOpen(!isAccordionOpen);
   };
 

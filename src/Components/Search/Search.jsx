@@ -26,7 +26,7 @@ const Search = ({ setSearch, updatePageNumber }) => {
 
           updatePageNumber(1);
         }}
-        placeholder="Search for characters"
+        placeholder="Search here"
         className="input"
         type="text"
       />

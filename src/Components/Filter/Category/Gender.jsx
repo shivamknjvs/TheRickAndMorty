@@ -12,7 +12,7 @@ const Gender = ({ updateGender, updatePageNumber }) => {
 
   // Function to toggle accordion open/closed state
   const toggleAccordion = () => {
-    console.log("change from gender");
+    // console.log("change from gender");
     setAccordionOpen(!isAccordionOpen);
   };
 

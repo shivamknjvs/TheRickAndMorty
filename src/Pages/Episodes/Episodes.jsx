@@ -83,24 +83,27 @@ const Episodes = () => {
       try {
         const data = await fetch(api).then((res) => res.json());
         setInfo(data.results[0]);
-        console.log(data.results[0]);
+        // console.log(data.results[0]);
         const charactersData = await Promise.all(
           data.results[0].characters.map((x) => fetch(x).then((res) => res.json()))
         );
         setResults(charactersData);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.log("results",results);
+        window.alert("Please enter valid episode");
+        setResults([]);
+        // console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
   }, [api]);
-console.log(search);
+// console.log(search);
   return (
     <>
       <div className="Hero-section">
         <div className="container">
-          <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+          <Search setSearch={setSearch} updatePageNumber={updatePageNumber}  />
           <InputGroup name="Episode" setSearch={setSearch} options={episodeNames}  />
           
         </div>
@@ -112,8 +115,8 @@ console.log(search);
         <h5>Air Date: {air_date === "" ? "Unknown" : air_date}</h5>
       </div>
       <div className="episodes-content">
-        
-          <Card page="/episodes/" results={results} />
+
+          {results.length>1?<Card page="/episodes/" results={results} />: "No Result for {episode}"}
         
       </div>
     </>

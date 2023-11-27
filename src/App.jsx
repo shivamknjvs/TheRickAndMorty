@@ -53,11 +53,14 @@ const Home = () => {
 
   // Effect hook to fetch data when component mounts or when dependencies change
   useEffect(() => {
-    (async function () {
+    try{(async function () {
       let data = await fetch(api).then((res) => res.json());
       updateFetchedData(data);
-    })();
-    console.log(api);
+    })}
+    catch(error){
+      window.alert("Please enter valid character");
+    }
+    // console.log(api);
   }, [api]);
 
   return (

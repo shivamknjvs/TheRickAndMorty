@@ -21,7 +21,7 @@ const Navbar = () => {
         {/* Right side of the navbar with navigation links */}
         <div className="Right-Side">
           {/* NavLink for Characters page */}
-          <NavLink to="/" exact>
+          <NavLink to="/" >
             {/* Characters link with conditional 'active' class */}
             <div className={`Characters ${id === "Characters" ? 'active' : ''}`}>Characters</div>
           </NavLink>

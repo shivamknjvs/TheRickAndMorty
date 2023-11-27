@@ -11,7 +11,7 @@ const Locations = () => {
 
   let [results, setResults] = React.useState([]);
   let [info, setInfo] = useState({});
-  let { dimension, type, name } = info;
+  let { dimension, type, name, residents } = info;
   let [number, setNumber] = useState(1);
   let [pageNumber,updatePageNumber]=useState(1);
   const [search, setSearch]=useState("Earth%20(C-137)");
@@ -24,16 +24,18 @@ const Locations = () => {
 
   useEffect(() => {
     (async function () {
-      let data = await fetch(api).then((res) => res.json());
+      try{let data = await fetch(api).then((res) => res.json());
       setInfo(data.results[0]);
-      console.log(data.results[0]);
+      // console.log(data.results[0]);
       let a = await Promise.all(
         
         data.results[0].residents.map((x) => {
           return  fetch(x).then((res) => res.json());
         })
       );
-
+} catch(error){
+  window.alert("Please enter valid location");
+}
       setResults(a);
     })();
   }, [api]);
@@ -187,8 +189,9 @@ const Locations = () => {
             {name === "" ? "Unknown" : name}
           </span>
         </h1>
-        <h5>Dimension: {dimension === "" ? "Unknown" : dimension}</h5>
-        <h6>Type: {type === "" ? "Unknown" : type}</h6>
+        <h4>Dimension: {dimension === "" ? "Unknown" : dimension}</h4>
+        <h4>Type: {type === "" ? "Unknown" : type}</h4>
+        <h4>No. of Residents: {residents?residents.length:0}</h4>
       </div>
      
       <div className="Card-container">

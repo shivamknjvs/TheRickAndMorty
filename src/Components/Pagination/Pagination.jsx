@@ -6,7 +6,7 @@ import "./Pagination.css";
 const Pagination = ({ pageNumber, info, updatePageNumber }) => {
   // Callback function for page change
   let pageChange = (data) => {
-    console.log(data.selected);
+    // console.log(data.selected);
     updatePageNumber(data.selected + 1);
   };
 

@@ -12,7 +12,7 @@ const Status = ({ updateStatus, updatePageNumber }) => {
 
   // Function to toggle accordion open/closed state
   const toggleAccordion = () => {
-    console.log("change from status");
+    // console.log("change from status");
     setAccordionOpen(!isAccordionOpen);
   };
 
