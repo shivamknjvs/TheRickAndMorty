@@ -1,6 +1,6 @@
 # RickAndMorty Project
 
-![RickAndMorty Logo](./public/logo.png)
+![RickAndMorty Logo](./public/Logo.png)
 
 ## Overview
 
@@ -8,9 +8,9 @@ The RickAndMorty Character Viewer is a web application that allows users to expl
 
 ## Features
 
-- **Feature 1:** [Character Page with Filter and Search functionality]
-- **Feature 2:** [Episodes Page with Search functionality]
-- **Feature 3:** [Locations Page with Search functionality]
+- **Feature 1:** Character Page with Filter and Search functionality
+- **Feature 2:** Episodes Page with Search functionality
+- **Feature 3:** Locations Page with Search functionality
 
 ## Live Link
 
