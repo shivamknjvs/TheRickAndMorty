@@ -5,7 +5,7 @@ import "./Gender.css";
 // Gender component for gender filter
 const Gender = ({ updateGender, updatePageNumber }) => {
   // Array of gender options
-  const genders = ["female", "male", "genderless", "unknown"];
+  const genders = ["Female", "Male", "Genderless", "Unknown"];
   
   // State to manage accordion open/closed state
   const [isAccordionOpen, setAccordionOpen] = useState(false);
